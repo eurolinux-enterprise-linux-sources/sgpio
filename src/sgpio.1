@@ -1,0 +1,58 @@
+.TH sgpio 1  "December 2007" "version 0.3" "USER COMMANDS"
+.SH NAME
+sgpio \- captive backplane LED control utility
+.SH SYNOPSIS
+.B sgpio
+[\-h] [\-V] [[\-d|\-\-disk <device>[,<device>...]] | [\-p|\-\-port <port>[,<port>...]]] [\-s|\-\-status <status>] [\-f|\-\-freq <frequency>]
+.SH DESCRIPTION
+Serial General Purpose Input Output (SGPIO) is a communication method used
+between a main board and a variety of internal and external hard disk drive
+bay enclosures.  This utility can be used to control LEDs in an enclosure.
+For more information about SGPIO, please consult the SFF-8485 Specification.   
+.SH OPTIONS
+.TP
+\-h, \-\-help
+displays a short help text
+.TP
+\-V, \-\-version
+displays the utility and AHCI SGPIO specification
+.TP
+\-d, \-\-disk
+disk name of LED location.  Names are sda,sdb,sdc,... Multiple names can be provided in a comma-delimited list.
+.TP
+\-p, \-\-port
+SATA port number of LED location, can be used if a disk name is no 
+longer valid. 0,1,2,3,... Multiple ports can be provided in a comma-delimited list.
+.TP
+\-s, \-\-status
+status of the LED to set.  LED status is: locate, fault, rebuild, off 
+.TP
+\-f, \-\-freq
+Set the frequency at which the LED should blink (in Hz). Frequency should be an integer between 1 and 10. 
+
+.SH EXAMPLES
+.TP
+Set the locate LED on SDA with an Intel Intelligent backplane:
+.B sgpio
+\-d sda \-s locate
+.PP
+.TP
+Set the locate LED on SDA to flash at 3 Hz for non-intelligent backplanes:
+.B sgpio
+\-d sda \-s locate \-f 3
+.PP
+.TP
+Set SATA port 2 with fault at a 3 Hz flash rate:
+.B sgpio
+\-p 2 \-s fault \-f 3
+.PP
+.TP
+Set disks sda through sdf to fault:
+.B sgpio
+\-d sda,sdb,sdc,sdd,sde,sdf \-s fault
+.PP
+.SH EXIT STATUS
+sgpio should return zero when successful.  It will return with a 
+non-zero value if there was a failure.
+.SH AUTHOR
+Eric R. Hall <Eric.R.Hall@intel.com>
