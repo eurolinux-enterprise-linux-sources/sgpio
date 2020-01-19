@@ -1,7 +1,7 @@
 Summary: SGPIO captive backplane tool
 Name: sgpio
 Version: 1.2.0.10
-Release: 11%{?dist}
+Release: 13%{?dist}
 License: GPLv2+
 Group: System Environment/Base
 URL: http://sources.redhat.com/lvm2/wiki/DMRAID_Eventing
@@ -36,6 +36,12 @@ make install INSTALL="%{__install} -p" DESTDIR=$RPM_BUILD_ROOT SBIN_DIR=$RPM_BUI
 %{_mandir}/man1/sgpio.*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.2.0.10-13
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.2.0.10-12
+- Mass rebuild 2013-12-27
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0.10-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
